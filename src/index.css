@@ -1,0 +1,66 @@
+body{
+    background-color: rgb(5, 32, 32);
+}
+.container{
+    font-family: sans-serif;
+    text-align: center;
+}
+h1{
+    color: hsl(0, 0%, 80%);
+}
+.input input{
+    padding: 7px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border: 2px solid hsl(0, 0%, 50%);
+    border-radius: 5px;
+}
+.input input[type="text"]{
+    color: hsl(0, 0%, 20%);
+    outline: none;
+}
+button{
+    padding: 14px 15px 10px 15px;
+    margin-left: 10px;
+    border: 1px solid hsl(40, 20%, 40%);
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+.add-button{
+    background-color: hsl(120, 91%, 50%);
+}
+.add-button:hover{
+    background-color: hsl(120, 91%, 40%);
+}
+.delete-button{
+    background-color: hsl(0, 91%, 50%);
+}
+.delete-button:hover{
+    background-color: hsl(0, 91%, 40%);
+}
+.move{
+    background-color: hsl(229, 91%, 70%);
+}
+.move:hover{
+    background-color: hsl(229, 91%, 60%);
+}
+.container ul{
+    padding: 0;
+}
+.container li{
+    font-size: 1.7rem;
+    font-weight: bold;
+    padding: 20px;
+    background-color: hsl(208, 100%, 90%);
+    margin: 10px;
+    list-style: none;
+    border: none;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+}
+.flex {
+    flex : 1;
+}
