@@ -1,42 +1,30 @@
 import React from "react";
-import { useState } from "react";
 import Addtodos from "./Addtodo";
 import Alltodos from "./Alltodos";
 import CompletedTask from "./CompletedTask";
+import { useDispatch } from 'react-redux';
+import { addTask as addTaskAction } from '../Slices/Slice';
+import { finishedTask as finishedTaskAction } from '../Slices/Slice'
+import { taskUp } from "../Slices/Slice"; 
+import { taskDown } from "../Slices/Slice"; 
 
 const Todo = () => {
-  const [tasks, setTasks] = useState([]);
-  const [completedTask, setCompletedTask] = useState([]);
+const dispatch = useDispatch()
 
   const addTask = (newTask) => {
-    setTasks([...tasks, newTask]);
+    dispatch(addTaskAction(newTask))
   };
 
-  const deleteTask = (index) => {
-    const filteredTasks = completedTask.filter((_, i) => i !== index)
-    setCompletedTask(filteredTasks)
-  };
-
+  
   const finishedTask = (index) => {
-    const markedTasks = (tasks[index])
-    const filteredTasks = tasks.filter((_, i) => i !== index)
-    setTasks(filteredTasks)
-    setCompletedTask([...completedTask, markedTasks])
+    dispatch(finishedTaskAction(index))
   }
   const upTask = (index) => {
-    if (index > 0) {
-      const taskUp = [...tasks];
-      [taskUp[index], taskUp[index - 1]] = [taskUp[index - 1], taskUp[index]];
-      setTasks(taskUp);
-    }
+    dispatch(taskUp(index))
   };
 
   const downTask = (index) => {
-    if (index < tasks.length - 1) {
-      const taskUp = [...tasks];
-      [taskUp[index], taskUp[index + 1]] = [taskUp[index + 1], taskUp[index]];
-      setTasks(taskUp);
-    }
+    dispatch(taskDown(index))
   };
   return (
     <div className="container">
@@ -44,24 +32,18 @@ const Todo = () => {
 
 
       <div className="input">
-        {/*  put input and add button in a separate comp */}
         <Addtodos addTasks={addTask} />
       </div>
 
 
       <ul>
-        {/* AllTodos - a component which renders a list of Todo Component */}
         <Alltodos upTask={upTask} 
                   downTask={downTask} 
-                  tasks={tasks}
                   finishedTask={finishedTask}
                   />
       </ul>
       <ul>
-      <CompletedTask 
-        deleteTask={deleteTask}
-        completedTask={completedTask}
-        />
+      <CompletedTask />
       </ul>
        
     </div>
