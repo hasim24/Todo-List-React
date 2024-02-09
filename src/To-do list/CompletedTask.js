@@ -5,25 +5,25 @@ import { useDispatch } from "react-redux";
 import { completedTasksSelector } from "../Slices/Slice";
 import { deleteTask as deleteTaskAction } from "../Slices/Slice";
 
-
-const CompletedTask = ({ deleteTask, completedTask }) => {
+const CompletedTask = () => {
   const dispatch = useDispatch();
   const deleteTask = (index) => {
     dispatch(deleteTaskAction(index));
   };
   const completedTask = useSelector(completedTasksSelector);
+
   return (
     <div>
       {completedTask.map((tasks, index) => {
         return (
-          <li key={index}>
-            <CompletedList
-              tasks={tasks}
-              index={index}
-              isComplete
-              deleteTask={deleteTask}
-            />
-          </li>
+          <div>
+            <li key={index}>
+              <CompletedList tasks={tasks} isComplete />
+              <button className="delete-button" onClick={() => deleteTask(index)}>
+                Delete
+              </button>
+            </li>
+          </div>
         );
       })}
     </div>

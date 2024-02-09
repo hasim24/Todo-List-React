@@ -1,20 +1,24 @@
 import React from "react";
 import List from "./Todo";
+import { useSelector } from "react-redux";
+import { tasksSelector } from "../Slices/Slice";
 
-const Alltodos = ({ tasks, deleteTask, upTask, downTask, finishedTask }) => {
-  const isComplete = false;
+const Alltodos = ({ upTask, downTask, finishedTask }) => {
+  const task = useSelector(tasksSelector);
+  const isComplete = false
+
   return (
     <div>
-      {tasks.map((tasks, index) => {
+      {task.map((tasks, index) => {
         return (
           <li key={index}>
+            
             <List
               tasks={tasks}
-              isComplete={false}
-              deleteTask={deleteTask}
+              
+              index={index}
               upTask={upTask}
               downTask={downTask}
-              index={index}
               finishedTask={finishedTask}
             />
             {isComplete ? (

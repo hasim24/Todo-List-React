@@ -6,14 +6,7 @@ const CompletedList = ({tasks, isComplete}) => {
         <span 
                style={{textDecoration: isComplete ? "line-Through" : "none"}}
          >{tasks}</span>
-            <button
-              className="delete-button"
-              onClick={() => {
-                 deleteTask(index);
-              }}
-            >
-              Delete
-            </button>
+            
     </div>
   )
 }
